@@ -22,7 +22,7 @@ services:
         command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/3e96dde14b6926dfe6fffcd23b2425d1aa84628d671e9a5ac1b17ada7abeada8_sk -b admin:adminpw -d'
         volumes:
             - /etc/hosts:/etc/hosts
-            - ../config/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
+            - ../../config/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
         container_name: ca_peerOrg1
         networks:
             - byfn
