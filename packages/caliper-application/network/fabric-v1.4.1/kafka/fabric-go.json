@@ -2,7 +2,7 @@
   "caliper": {
     "blockchain": "fabric",
     "command" : {
-      "start": "cd network/fabric-v1.4.1/kafka;docker-compose -f ../base/docker-compose-e2e.yaml -f docker-compose-kafka.yaml up -d;sleep 3s",
+      "start": "cd network/fabric-v1.4.1/kafka;docker-compose -f ../base/docker-compose-e2e.yaml -f docker-compose-kafka.yaml up -d;sleep 10s",
       "end" : "cd network/fabric-v1.4.1/kafka;docker-compose -f ../base/docker-compose-e2e.yaml -f docker-compose-kafka.yaml down --volumes --remove-orphans;docker rm $(docker ps -aq);docker rmi $(docker images dev* -q)"
     }
   },
