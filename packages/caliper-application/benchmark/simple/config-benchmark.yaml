@@ -5,16 +5,28 @@ test:
     performance with simple account opening & querying transactions
   clients:
     type: local
-    number: 1
+    number: 8
+#    type: zookeeper
+#    zoo:
+#      server: 10.229.42.159:2181
+#      clientsPerHost: 8
   rounds:
   - label: open
     description: Test description for the opening of an account through the deployed chaincode
     txNumber:
-    - 100
+    - 2000
+    - 2000
+    - 2000
     rateControl:
     - type: fixed-rate
       opts:
-        tps: 50
+        tps: 500
+    - type: fixed-rate
+      opts:
+          tps: 800
+    - type: fixed-rate
+      opts:
+          tps: 1000
     arguments:
       money: 10000
     callback: benchmark/simple/open.js
@@ -34,6 +46,15 @@ monitor:
   docker:
     name:
     - all
+    - http://192.168.0.84:2375/ca_peerOrg1
+    - http://192.168.0.92:2375/ca_peerOrg2
+    - http://192.168.0.91:2375/peer0.org1.example.com
+    - http://192.168.0.93:2375/peer0.org2.example.com
+    - http://192.168.0.84:2375/orderer.example.com
+    - http://192.168.0.92:2375/orderer2.example.com
+    - http://192.168.0.91:2375/orderer3.example.com
+    - http://192.168.0.93:2375/orderer4.example.com
+    - http://192.168.0.93:2375/orderer5.example.com
   process:
   - command: node
     arguments: local-client.js
