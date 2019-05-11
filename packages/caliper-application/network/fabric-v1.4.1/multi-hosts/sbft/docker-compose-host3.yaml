@@ -8,21 +8,11 @@ version: '2'
 networks:
     byfn:
 services:
-    ca1:
-        image: hyperledger/fabric-ca:1.4.1
-        environment:
-            - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-            - FABRIC_CA_SERVER_CA_NAME=ca-org2
-            - FABRIC_CA_SERVER_TLS_ENABLED=true
-            - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem
-            - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/611154d94484e164b0c2889e0e04386ac84461813adc836ef3168b15b98c9218_sk
-        ports:
-            - "8054:7054"
-        command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/611154d94484e164b0c2889e0e04386ac84461813adc836ef3168b15b98c9218_sk -b admin:adminpw -d'
-        volumes:
-            - /etc/hosts:/etc/hosts
-            - ../../config/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
-        container_name: ca_peerOrg2
+    peer0.org1.example.com:
+        container_name: peer0.org1.example.com
+        extends:
+            file: ../../base/docker-compose-base.yaml
+            service: peer0.org1.example.com
         networks:
             - byfn
 
