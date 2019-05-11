@@ -66,8 +66,8 @@
   },
   "info" : {
     "Version": "1.4.1",
-    "Size": "2 Org with 4 Peer",
-    "Orderer": "Sbft",
-    "Distribution": "Single Host"
+    "Size": "2 Org with 2 Peer",
+    "Orderer": "Raft",
+    "Distribution": "Multi Host"
   }
 }

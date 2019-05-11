@@ -71,7 +71,7 @@
   "info" : {
     "Version": "1.4.1",
     "Size": "2 Org with 4 Peer",
-    "Orderer": "Sbft",
+    "Orderer": "Raft",
     "Distribution": "Single Host"
   }
 }
