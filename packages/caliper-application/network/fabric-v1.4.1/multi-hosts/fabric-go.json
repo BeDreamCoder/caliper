@@ -17,7 +17,7 @@
         "mspid": "Org1MSP",
         "msp": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org1.example.com/msp/",
         "ca": {
-          "url": "https://peer0.org1.example.com:7054",
+          "url": "https://ca0:7054",
           "name": "ca-org1"
         },
         "peer1": {
