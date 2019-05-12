@@ -50,5 +50,7 @@ services:
             - KAFKA_DEFAULT_REPLICATION_FACTOR=3
         volumes:
             - /etc/hosts:/etc/hosts
+        ports:
+            - 9092:9092
         networks:
             - byfn
