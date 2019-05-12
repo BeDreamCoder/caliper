@@ -53,7 +53,7 @@ services:
             - zookeeper2
         environment:
             - KAFKA_BROKER_ID=3
-            - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
+            - KAFKA_ZOOKEEPER_CONNECT=zookeeper2:2181
             - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka2:9092
             - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
             - KAFKA_MESSAGE_MAX_BYTES=1048576 # 1 * 1024 * 1024 B
