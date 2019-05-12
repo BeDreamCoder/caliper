@@ -52,6 +52,8 @@ services:
             - ZOOKEEPER_TICK_TIME=2000
             - ZOO_MY_ID=1
             - ZOO_SERVERS=server.1=zookeeper0:2888:3888 server.2=zookeeper1:2888:3888 server.3=zookeeper2:2888:3888
+        volumes:
+            - /etc/hosts:/etc/hosts
         ports:
             - 2181:2181
         networks:
@@ -73,6 +75,8 @@ services:
             - KAFKA_LOG_RETENTION_MS=-1
             - KAFKA_MIN_INSYNC_REPLICAS=1
             - KAFKA_DEFAULT_REPLICATION_FACTOR=1
+        volumes:
+            - /etc/hosts:/etc/hosts
         networks:
             - byfn
 
