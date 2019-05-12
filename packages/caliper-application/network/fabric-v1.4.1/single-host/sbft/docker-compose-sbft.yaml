@@ -16,13 +16,13 @@ services:
       service: orderer-base
     container_name: orderer2.example.com
     networks:
-    - byfn
+      - byfn
     volumes:
-        - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
-        - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
-        - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
+      - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
+      - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
+      - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
     ports:
-    - 8050:7050
+      - 8050:7050
 
   orderer3.example.com:
     extends:
@@ -30,13 +30,13 @@ services:
       service: orderer-base
     container_name: orderer3.example.com
     networks:
-    - byfn
+      - byfn
     volumes:
-        - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
-        - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
-        - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
+      - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
+      - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
+      - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
     ports:
-    - 9050:7050
+      - 9050:7050
 
   orderer4.example.com:
     extends:
@@ -44,10 +44,10 @@ services:
       service: orderer-base
     container_name: orderer4.example.com
     networks:
-    - byfn
+      - byfn
     volumes:
-        - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
-        - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
-        - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
+      - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
+      - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
+      - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
     ports:
-    - 10050:7050
+      - 10050:7050

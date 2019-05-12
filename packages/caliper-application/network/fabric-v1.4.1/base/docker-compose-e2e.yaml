@@ -50,7 +50,7 @@ services:
       file: docker-compose-base.yaml
       service: orderer.example.com
     volumes:
-        - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
+      - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
     container_name: orderer.example.com
     networks:
       - byfn

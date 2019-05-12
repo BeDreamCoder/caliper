@@ -6,40 +6,40 @@
 version: '2'
 
 networks:
-    byfn:
+  byfn:
 services:
-    ca1:
-        image: hyperledger/fabric-ca:1.4.1
-        environment:
-            - GODEBUG=netdns=go
-            - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-            - FABRIC_CA_SERVER_CA_NAME=ca-org2
-            - FABRIC_CA_SERVER_TLS_ENABLED=true
-            - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem
-            - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/611154d94484e164b0c2889e0e04386ac84461813adc836ef3168b15b98c9218_sk
-        ports:
-            - "8054:7054"
-        command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/611154d94484e164b0c2889e0e04386ac84461813adc836ef3168b15b98c9218_sk -b admin:adminpw -d'
-        volumes:
-            - /etc/hosts:/etc/hosts
-            - ../../config/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
-        container_name: ca_peerOrg2
-        networks:
-            - byfn
+  ca1:
+    image: hyperledger/fabric-ca:1.4.1
+    environment:
+      - GODEBUG=netdns=go
+      - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
+      - FABRIC_CA_SERVER_CA_NAME=ca-org2
+      - FABRIC_CA_SERVER_TLS_ENABLED=true
+      - FABRIC_CA_SERVER_TLS_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem
+      - FABRIC_CA_SERVER_TLS_KEYFILE=/etc/hyperledger/fabric-ca-server-config/611154d94484e164b0c2889e0e04386ac84461813adc836ef3168b15b98c9218_sk
+    ports:
+      - "8054:7054"
+    command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org2.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/611154d94484e164b0c2889e0e04386ac84461813adc836ef3168b15b98c9218_sk -b admin:adminpw -d'
+    volumes:
+      - /etc/hosts:/etc/hosts
+      - ../../config/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
+    container_name: ca_peerOrg2
+    networks:
+      - byfn
 
-    orderer2.example.com:
-        extends:
-            file: ../../base/peer-base.yaml
-            service: orderer-base
-        container_name: orderer2.example.com
-        networks:
-            - byfn
-        volumes:
-            - /etc/hosts:/etc/hosts
-            - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
-            - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
-            - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
-        ports:
-            - 6060:6060
-            - 6101:6101
-            - 7050:7050
+  orderer2.example.com:
+    extends:
+      file: ../../base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer2.example.com
+    networks:
+      - byfn
+    volumes:
+      - /etc/hosts:/etc/hosts
+      - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
+      - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
+      - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
+    ports:
+      - 6060:6060
+      - 6101:6101
+      - 7050:7050

@@ -6,29 +6,29 @@
 version: '2'
 
 networks:
-    byfn:
+  byfn:
 services:
-    peer0.org1.example.com:
-        container_name: peer0.org1.example.com
-        extends:
-            file: ../../base/docker-compose-base.yaml
-            service: peer0.org1.example.com
-        networks:
-            - byfn
+  peer0.org1.example.com:
+    container_name: peer0.org1.example.com
+    extends:
+      file: ../../base/docker-compose-base.yaml
+      service: peer0.org1.example.com
+    networks:
+      - byfn
 
-    orderer3.example.com:
-        extends:
-            file: ../../base/peer-base.yaml
-            service: orderer-base
-        container_name: orderer3.example.com
-        networks:
-            - byfn
-        volumes:
-            - /etc/hosts:/etc/hosts
-            - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
-            - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
-            - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
-        ports:
-            - 6060:6060
-            - 6101:6101
-            - 7050:7050
+  orderer3.example.com:
+    extends:
+      file: ../../base/peer-base.yaml
+      service: orderer-base
+    container_name: orderer3.example.com
+    networks:
+      - byfn
+    volumes:
+      - /etc/hosts:/etc/hosts
+      - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
+      - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
+      - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
+    ports:
+      - 6060:6060
+      - 6101:6101
+      - 7050:7050

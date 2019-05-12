@@ -21,13 +21,13 @@ services:
       ZOOKEEPER_CLIENT_PORT: 32181
       ZOOKEEPER_TICK_TIME: 2000
     networks:
-    - byfn
+      - byfn
 
   kafka.example.com:
     container_name: kafka.example.com
     image: hyperledger/fabric-kafka:latest
     depends_on:
-    - zookeeper.example.com
+      - zookeeper.example.com
     environment:
       - KAFKA_BROKER_ID=1
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper.example.com:2181
@@ -40,4 +40,4 @@ services:
       - KAFKA_MIN_INSYNC_REPLICAS=1
       - KAFKA_DEFAULT_REPLICATION_FACTOR=1
     networks:
-    - byfn
+      - byfn
