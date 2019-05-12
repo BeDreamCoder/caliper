@@ -46,8 +46,8 @@ services:
             - KAFKA_REPLICA_FETCH_MAX_BYTES=1048576 # 1 * 1024 * 1024 B
             - KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
             - KAFKA_LOG_RETENTION_MS=-1
-            - KAFKA_MIN_INSYNC_REPLICAS=1
-            - KAFKA_DEFAULT_REPLICATION_FACTOR=1
+            - KAFKA_MIN_INSYNC_REPLICAS=2
+            - KAFKA_DEFAULT_REPLICATION_FACTOR=3
         volumes:
             - /etc/hosts:/etc/hosts
         networks:
