@@ -36,8 +36,6 @@ services:
     kafka2:
         container_name: kafka2
         image: hyperledger/fabric-kafka:latest
-        depends_on:
-            - zookeeper2
         environment:
             - KAFKA_BROKER_ID=3
             - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
