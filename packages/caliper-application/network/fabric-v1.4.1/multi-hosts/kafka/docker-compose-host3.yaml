@@ -33,23 +33,6 @@ services:
             - 6101:6101
             - 7050:7050
 
-    zookeeper2:
-        container_name: zookeeper2
-        image: hyperledger/fabric-zookeeper:latest
-        environment:
-            - ZOOKEEPER_CLIENT_PORT=2181
-            - ZOOKEEPER_TICK_TIME=2000
-            - ZOO_MY_ID=3
-            - ZOO_SERVERS=server.1=zookeeper0:2888:3888 server.2=zookeeper1:2888:3888 server.3=zookeeper2:2888:3888
-        volumes:
-            - /etc/hosts:/etc/hosts
-        ports:
-            - 2181:2181
-            - 2888:2888
-            - 3888:3888
-        networks:
-            - byfn
-
     kafka2:
         container_name: kafka2
         image: hyperledger/fabric-kafka:latest
@@ -57,7 +40,7 @@ services:
             - zookeeper2
         environment:
             - KAFKA_BROKER_ID=3
-            - KAFKA_ZOOKEEPER_CONNECT=zookeeper2:2181
+            - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
             - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka2:9092
             - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
             - KAFKA_MESSAGE_MAX_BYTES=1048576 # 1 * 1024 * 1024 B

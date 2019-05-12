@@ -1,0 +1,24 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+networks:
+    byfn:
+services:
+    zookeeper0:
+        container_name: zookeeper0
+        image: hyperledger/fabric-zookeeper:latest
+        environment:
+            - ZOOKEEPER_CLIENT_PORT=2181
+            - ZOOKEEPER_TICK_TIME=2000
+            - ZOO_MY_ID=1
+            - ZOO_SERVERS=server.1=0.0.0.0:2888:3888 server.2=zookeeper1:2888:3888 server.3=zookeeper2:2888:3888
+        ports:
+            - 2181:2181
+            - 2888:2888
+            - 3888:3888
+        networks:
+            - byfn
