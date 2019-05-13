@@ -22,6 +22,6 @@ services:
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer5.example.com/msp:/var/hyperledger/orderer/msp
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/:/var/hyperledger/orderer/tls
     ports:
-      - 7060:6060
+#      - 7060:6060
       - 7101:6101
       - 8050:7050
