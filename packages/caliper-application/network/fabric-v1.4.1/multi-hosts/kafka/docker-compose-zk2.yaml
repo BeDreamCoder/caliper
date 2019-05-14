@@ -16,5 +16,8 @@ services:
     environment:
       - ZOO_MY_ID=3
       - ZOO_SERVERS=server.1=zookeeper0:2888:3888 server.2=zookeeper1:2888:3888 server.3=0.0.0.0:2888:3888
+    volumes:
+      - /tmp/zookeeper2/datalog:/datalog
+      - /tmp/zookeeper2/data:/data
     networks:
       - byfn

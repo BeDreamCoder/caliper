@@ -28,6 +28,7 @@ services:
       - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
+      - /tmp/orderer3.example.com:/var/hyperledger/production
     ports:
 #      - 6060:6060
       - 6101:6101
@@ -42,5 +43,7 @@ services:
       - KAFKA_BROKER_ID=3
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka2:9092
+    volumes:
+      - /tmp/kafka2/kafka-logs:/tmp/kafka-logs
     networks:
       - byfn

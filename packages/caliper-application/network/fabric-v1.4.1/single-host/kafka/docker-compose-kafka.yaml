@@ -20,6 +20,9 @@ services:
     environment:
       ZOOKEEPER_CLIENT_PORT: 32181
       ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - /tmp/zookeeper.example.com/datalog:/datalog
+      - /tmp/zookeeper.example.com/data:/data
     networks:
       - byfn
 
@@ -39,5 +42,7 @@ services:
       - KAFKA_LOG_RETENTION_MS=-1
       - KAFKA_MIN_INSYNC_REPLICAS=1
       - KAFKA_DEFAULT_REPLICATION_FACTOR=1
+    volumes:
+      - /tmp/kafka.example.com/kafka-logs:/tmp/kafka-logs
     networks:
       - byfn

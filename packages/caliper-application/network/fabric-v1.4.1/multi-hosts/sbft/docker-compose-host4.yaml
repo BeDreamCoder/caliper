@@ -29,6 +29,7 @@ services:
       - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
+      - /tmp/orderer4.example.com:/var/hyperledger/production
     ports:
 #      - 6060:6060
       - 6101:6101

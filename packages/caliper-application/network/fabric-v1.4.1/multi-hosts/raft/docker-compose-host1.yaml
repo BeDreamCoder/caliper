@@ -23,6 +23,7 @@ services:
     volumes:
       - /etc/hosts:/etc/hosts
       - ../../config/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
+      - /tmp/ca0/fabric-ca-server:/etc/hyperledger/fabric-ca-server
     container_name: ca_peerOrg1
     networks:
       - byfn
@@ -39,6 +40,7 @@ services:
       - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
+      - /tmp/orderer.example.com:/var/hyperledger/production
     ports:
 #      - 6060:6060
       - 6101:6101
