@@ -17,7 +17,7 @@ services:
       - ZOO_MY_ID=2
       - ZOO_SERVERS=server.1=zookeeper0:2888:3888 server.2=0.0.0.0:2888:3888 server.3=zookeeper2:2888:3888
     volumes:
-      - /tmp/zookeeper1/datalog:/datalog
-      - /tmp/zookeeper1/data:/data
+      - ${MOUNT_PATH}/zookeeper1/datalog:/datalog
+      - ${MOUNT_PATH}/zookeeper1/data:/data
     networks:
       - byfn

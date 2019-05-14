@@ -23,7 +23,7 @@ services:
     volumes:
       - /etc/hosts:/etc/hosts
       - ../../config/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
-      - /tmp/ca1/fabric-ca-server:/etc/hyperledger/fabric-ca-server
+      - ${MOUNT_PATH}/ca1/fabric-ca-server:/etc/hyperledger/fabric-ca-server
     container_name: ca_peerOrg2
     networks:
       - byfn
@@ -40,9 +40,9 @@ services:
       - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
-      - /tmp/orderer2.example.com:/var/hyperledger/production
+      - ${MOUNT_PATH}/orderer2.example.com:/var/hyperledger/production
     ports:
-      #      - 6060:6060
+#      - 6060:6060
       - 6101:6101
       - 7050:7050
 
@@ -56,6 +56,6 @@ services:
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9092
     volumes:
-      - /tmp/kafka1/kafka-logs:/tmp/kafka-logs
+      - ${MOUNT_PATH}/kafka1/kafka-logs:/tmp/kafka-logs
     networks:
       - byfn

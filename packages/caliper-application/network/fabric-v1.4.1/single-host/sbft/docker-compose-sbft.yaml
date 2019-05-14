@@ -21,7 +21,7 @@ services:
       - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/msp:/var/hyperledger/orderer/msp
       - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/:/var/hyperledger/orderer/tls
-      - /tmp/orderer2.example.com:/var/hyperledger/production
+      - ${MOUNT_PATH}/orderer2.example.com:/var/hyperledger/production
     ports:
       - 8050:7050
 
@@ -36,7 +36,7 @@ services:
       - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
       - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
-      - /tmp/orderer3.example.com:/var/hyperledger/production
+      - ${MOUNT_PATH}/orderer3.example.com:/var/hyperledger/production
     ports:
       - 9050:7050
 
@@ -51,6 +51,6 @@ services:
       - ../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
       - ../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls
-      - /tmp/orderer4.example.com:/var/hyperledger/production
+      - ${MOUNT_PATH}/orderer4.example.com:/var/hyperledger/production
     ports:
       - 10050:7050
