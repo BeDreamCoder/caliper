@@ -35,7 +35,7 @@
           "url": "https://ca1:7054",
           "name": "ca-org2"
         },
-        "peer2": {
+        "peer1": {
           "requests": "grpcs://peer0.org2.example.com:9051",
           "events": "grpcs://peer0.org2.example.com:9053",
           "server-hostname": "peer0.org2.example.com",

@@ -1,9 +1,9 @@
 {
   "caliper": {
     "blockchain": "fabric",
-    "command" : {
+    "command": {
       "start": "cd network/fabric-v1.4.1/single-host/solo;docker-compose -f ../../base/docker-compose-e2e.yaml up -d;sleep 3s",
-      "end" : "cd network/fabric-v1.4.1/single-host/solo;docker-compose -f ../../base/docker-compose-e2e.yaml down --volumes --remove-orphans;docker rm $(docker ps -aq);docker rmi $(docker images dev* -q)"
+      "end": "cd network/fabric-v1.4.1/single-host/solo;docker-compose -f ../../base/docker-compose-e2e.yaml down --volumes --remove-orphans;docker rm $(docker ps -aq);docker rmi $(docker images dev* -q)"
     }
   },
   "fabric": {
@@ -29,6 +29,33 @@
           "events": "grpcs://localhost:7053",
           "server-hostname": "peer0.org1.example.com",
           "tls_cacerts": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+        },
+        "peer2": {
+          "requests": "grpcs://localhost:8051",
+          "events": "grpcs://localhost:8053",
+          "server-hostname": "peer1.org1.example.com",
+          "tls_cacerts": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt"
+        }
+      },
+      "org2": {
+        "name": "peerOrg2",
+        "mspid": "Org2MSP",
+        "msp": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org2.example.com/msp/",
+        "ca": {
+          "url": "https://localhost:8054",
+          "name": "ca-org2"
+        },
+        "peer1": {
+          "requests": "grpcs://localhost:9051",
+          "events": "grpcs://localhost:9053",
+          "server-hostname": "peer0.org2.example.com",
+          "tls_cacerts": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
+        },
+        "peer2": {
+          "requests": "grpcs://localhost:10051",
+          "events": "grpcs://localhost:10053",
+          "server-hostname": "peer1.org2.example.com",
+          "tls_cacerts": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt"
         }
       }
     },
@@ -37,11 +64,20 @@
         "name": "mychannel",
         "deployed": false,
         "config": "network/fabric-v1.4.1/config/channel-artifacts/mychannel.tx",
-        "organizations": ["org1"]
+        "organizations": [
+          "org1",
+          "org2"
+        ]
       }
     ],
     "chaincodes": [
-      {"id": "simple", "path": "contract/fabric/simple/go", "language":"golang", "version": "v0", "channel": "mychannel"}
+      {
+        "id": "simple",
+        "path": "contract/fabric/simple/go",
+        "language": "golang",
+        "version": "v0",
+        "channel": "mychannel"
+      }
     ],
     "endorsement-policy": {
       "identities": [
@@ -56,9 +92,30 @@
             "name": "admin",
             "mspId": "Org1MSP"
           }
+        },
+        {
+          "role": {
+            "name": "member",
+            "mspId": "Org2MSP"
+          }
+        },
+        {
+          "role": {
+            "name": "admin",
+            "mspId": "Org2MSP"
+          }
         }
       ],
-      "policy": { "1-of": [{"signed-by": 0}]}
+      "policy": {
+        "1-of": [
+          {
+            "signed-by": 0
+          },
+          {
+            "signed-by": 2
+          }
+        ]
+      }
     },
     "context": {
       "smallOperations": "mychannel",
@@ -68,7 +125,7 @@
       "query": "mychannel"
     }
   },
-  "info" : {
+  "info": {
     "Version": "1.4.1",
     "Size": "2 Org with 4 Peer",
     "Orderer": "Solo",
