@@ -25,6 +25,12 @@
           "events": "grpcs://peer0.org1.example.com:7053",
           "server-hostname": "peer0.org1.example.com",
           "tls_cacerts": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+        },
+        "peer2": {
+          "requests": "grpcs://localhost:8051",
+          "events": "grpcs://localhost:8053",
+          "server-hostname": "peer1.org1.example.com",
+          "tls_cacerts": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt"
         }
       },
       "org2": {
@@ -40,6 +46,12 @@
           "events": "grpcs://peer0.org2.example.com:9053",
           "server-hostname": "peer0.org2.example.com",
           "tls_cacerts": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
+        },
+        "peer2": {
+          "requests": "grpcs://localhost:10051",
+          "events": "grpcs://localhost:10053",
+          "server-hostname": "peer1.org2.example.com",
+          "tls_cacerts": "network/fabric-v1.4.1/config/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt"
         }
       }
     },
@@ -96,7 +108,13 @@
             "signed-by": 0
           },
           {
+            "signed-by": 1
+          },
+          {
             "signed-by": 2
+          },
+          {
+            "signed-by": 3
           }
         ]
       }
@@ -111,7 +129,7 @@
   },
   "info": {
     "Version": "1.4.1",
-    "Size": "2 Org with 2 Peer",
+    "Size": "2 Org with 4 Peer",
     "Orderer": "Raft",
     "Distribution": "Multi Host"
   }

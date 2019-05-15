@@ -9,6 +9,14 @@ networks:
   byfn:
 
 services:
+  peer1.org2.example.com:
+    container_name: peer1.org2.example.com
+    extends:
+      file: ../../base/docker-compose-base.yaml
+      service: peer1.org2.example.com
+    networks:
+      - byfn
+
   orderer5.example.com:
     extends:
       file: ../../base/peer-base.yaml

@@ -735,16 +735,29 @@ async function getcontext(channelConfig, clientIdx, txModeFile) {
         }
 
         // Cycle through available peers based on clientIdx
-        let peerInfo = peers[clientIdx % peers.length];
-        let data = fs.readFileSync(CaliperUtils.resolvePath(peerInfo.tls_cacerts, networkRoot));
-        let peer = client.newPeer(
-            peerInfo.requests,
-            {
-                pem: Buffer.from(data).toString(),
-                'ssl-target-name-override': peerInfo['server-hostname']
-            }
-        );
-        channel.addPeer(peer);
+        let peer;
+        for(let j in peers) {
+            let peerInfo = peers[j];
+            let data = fs.readFileSync(CaliperUtils.resolvePath(peerInfo.tls_cacerts, networkRoot));
+            peer = client.newPeer(
+                peerInfo.requests,
+                {
+                    pem: Buffer.from(data).toString(),
+                    'ssl-target-name-override': peerInfo['server-hostname']
+                }
+            );
+            channel.addPeer(peer);
+        }
+        // let peerInfo = peers[clientIdx % peers.length];
+        // let data = fs.readFileSync(CaliperUtils.resolvePath(peerInfo.tls_cacerts, networkRoot));
+        // let peer = client.newPeer(
+        //     peerInfo.requests,
+        //     {
+        //         pem: Buffer.from(data).toString(),
+        //         'ssl-target-name-override': peerInfo['server-hostname']
+        //     }
+        // );
+        // channel.addPeer(peer);
 
         // an event listener can only register with the peer in its own org
         if (isLegacy){
@@ -1027,6 +1040,9 @@ async function invokebycontext(context, id, version, args, timeout){
         args: args,
         txId: txIdObject,
     };
+
+    let i = Math.floor(Math.random() * channel.getPeers().length);
+    proposalRequest.targets = [channel.getPeers()[i]];
 
     let proposalResponseObject = null;
     try {
