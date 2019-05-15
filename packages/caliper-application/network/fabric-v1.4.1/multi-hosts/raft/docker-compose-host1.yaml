@@ -9,6 +9,8 @@ networks:
   byfn:
 services:
   ca0:
+    hostname: ca0
+    network_mode: "host"
     image: hyperledger/fabric-ca:1.4.1
     environment:
       - GODEBUG=netdns=go
@@ -29,6 +31,8 @@ services:
       - byfn
 
   orderer.example.com:
+    hostname: orderer.example.com
+    network_mode: "host"
     extends:
       file: ../../base/peer-base.yaml
       service: orderer-base

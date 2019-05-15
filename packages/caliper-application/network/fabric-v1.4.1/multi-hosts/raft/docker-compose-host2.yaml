@@ -9,6 +9,8 @@ networks:
   byfn:
 services:
   ca1:
+    hostname: ca1
+    network_mode: "host"
     image: hyperledger/fabric-ca:1.4.1
     environment:
       - GODEBUG=netdns=go
@@ -29,6 +31,8 @@ services:
       - byfn
 
   peer1.org1.example.com:
+    hostname: peer1.org1.example.com
+    network_mode: "host"
     container_name: peer1.org1.example.com
     extends:
       file: ../../base/docker-compose-base.yaml
@@ -37,6 +41,8 @@ services:
       - byfn
 
   orderer2.example.com:
+    hostname: orderer2.example.com
+    network_mode: "host"
     extends:
       file: ../../base/peer-base.yaml
       service: orderer-base
