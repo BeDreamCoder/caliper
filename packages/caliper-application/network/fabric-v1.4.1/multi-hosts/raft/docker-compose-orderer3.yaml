@@ -6,14 +6,6 @@
 version: '2'
 
 services:
-  peer1.org1.example.com:
-    hostname: peer1.org1.example.com
-    network_mode: "host"
-    container_name: peer1.org1.example.com
-    extends:
-      file: ../../base/docker-compose-base.yaml
-      service: peer1.org1.example.com
-
   orderer3.example.com:
     hostname: orderer3.example.com
     network_mode: "host"
@@ -27,6 +19,6 @@ services:
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/:/var/hyperledger/orderer/tls
       - ${MOUNT_PATH}/orderer3.example.com:/var/hyperledger/production
     ports:
-#      - 6060:6060
+      #      - 6060:6060
       - 6101:6101
       - 7050:7050
