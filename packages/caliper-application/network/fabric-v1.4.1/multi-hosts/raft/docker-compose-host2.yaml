@@ -5,8 +5,6 @@
 
 version: '2'
 
-networks:
-  byfn:
 services:
   ca1:
     hostname: ca1
@@ -27,8 +25,6 @@ services:
       - ../../config/crypto-config/peerOrganizations/org2.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ${MOUNT_PATH}/ca1/fabric-ca-server:/etc/hyperledger/fabric-ca-server
     container_name: ca_peerOrg2
-    networks:
-      - byfn
 
   peer1.org1.example.com:
     hostname: peer1.org1.example.com
@@ -37,8 +33,6 @@ services:
     extends:
       file: ../../base/docker-compose-base.yaml
       service: peer1.org1.example.com
-    networks:
-      - byfn
 
   orderer2.example.com:
     hostname: orderer2.example.com
@@ -47,8 +41,6 @@ services:
       file: ../../base/peer-base.yaml
       service: orderer-base
     container_name: orderer2.example.com
-    networks:
-      - byfn
     volumes:
       - /etc/hosts:/etc/hosts
       - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block

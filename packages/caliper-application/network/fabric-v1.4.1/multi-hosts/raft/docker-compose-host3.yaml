@@ -5,8 +5,6 @@
 
 version: '2'
 
-networks:
-  byfn:
 services:
   peer0.org1.example.com:
     hostname: peer0.org1.example.com
@@ -15,8 +13,6 @@ services:
     extends:
       file: ../../base/docker-compose-base.yaml
       service: peer0.org1.example.com
-    networks:
-      - byfn
 
   orderer3.example.com:
     hostname: orderer3.example.com
@@ -25,8 +21,6 @@ services:
       file: ../../base/peer-base.yaml
       service: orderer-base
     container_name: orderer3.example.com
-    networks:
-      - byfn
     volumes:
       - /etc/hosts:/etc/hosts
       - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
