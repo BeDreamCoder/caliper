@@ -6,6 +6,7 @@ services:
     restart: always
     network_mode: "host"
     hostname: 'zoo3'
+    container_name: zoo3
     ports:
       - 2183:2181
     environment:
