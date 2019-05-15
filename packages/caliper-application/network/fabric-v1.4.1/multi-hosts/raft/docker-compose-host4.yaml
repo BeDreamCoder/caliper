@@ -6,13 +6,13 @@
 version: '2'
 
 services:
-  peer0.org2.example.com:
-    hostname: peer0.org2.example.com
+  peer0.org1.example.com:
+    hostname: peer0.org1.example.com
     network_mode: "host"
-    container_name: peer0.org2.example.com
+    container_name: peer0.org1.example.com
     extends:
       file: ../../base/docker-compose-base.yaml
-      service: peer0.org2.example.com
+      service: peer0.org1.example.com
 
   orderer4.example.com:
     hostname: orderer4.example.com
@@ -22,7 +22,6 @@ services:
       service: orderer-base
     container_name: orderer4.example.com
     volumes:
-      - /etc/hosts:/etc/hosts
       - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp:/var/hyperledger/orderer/msp
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/:/var/hyperledger/orderer/tls

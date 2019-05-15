@@ -46,15 +46,7 @@ monitor:
   docker:
     name:
     - all
-    - http://192.168.0.84:2375/ca_peerOrg1
-    - http://192.168.0.92:2375/ca_peerOrg2
     - http://192.168.0.91:2375/peer0.org1.example.com
-    - http://192.168.0.93:2375/peer0.org2.example.com
-    - http://192.168.0.84:2375/orderer.example.com
-    - http://192.168.0.92:2375/orderer2.example.com
-    - http://192.168.0.91:2375/orderer3.example.com
-    - http://192.168.0.93:2375/orderer4.example.com
-    - http://192.168.0.93:2375/orderer5.example.com
   process:
   - command: node
     arguments: local-client.js

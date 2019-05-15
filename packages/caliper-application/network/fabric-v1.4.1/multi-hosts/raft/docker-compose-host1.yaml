@@ -21,7 +21,6 @@ services:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start --ca.certfile /etc/hyperledger/fabric-ca-server-config/ca.org1.example.com-cert.pem --ca.keyfile /etc/hyperledger/fabric-ca-server-config/3e96dde14b6926dfe6fffcd23b2425d1aa84628d671e9a5ac1b17ada7abeada8_sk -b admin:adminpw -d'
     volumes:
-      - /etc/hosts:/etc/hosts
       - ../../config/crypto-config/peerOrganizations/org1.example.com/ca/:/etc/hyperledger/fabric-ca-server-config
       - ${MOUNT_PATH}/ca0/fabric-ca-server:/etc/hyperledger/fabric-ca-server
     container_name: ca_peerOrg1
@@ -34,7 +33,6 @@ services:
       service: orderer-base
     container_name: orderer.example.com
     volumes:
-      - /etc/hosts:/etc/hosts
       - ../../config/channel-artifacts/${GENESIS_BLOCK}:/var/hyperledger/orderer/orderer.genesis.block
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
       - ../../config/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
