@@ -10,8 +10,6 @@ networks:
 
 services:
   peer1.org2.example.com:
-    hostname: peer1.org2.example.com
-    network_mode: "host"
     container_name: peer1.org2.example.com
     extends:
       file: ../../base/docker-compose-base.yaml
@@ -20,8 +18,6 @@ services:
       - byfn
 
   orderer5.example.com:
-    hostname: orderer5.example.com
-    network_mode: "host"
     extends:
       file: ../../base/peer-base.yaml
       service: orderer-base
