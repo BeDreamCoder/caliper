@@ -3,7 +3,7 @@
     "blockchain": "fabric",
     "command" : {
       "start": "cd network/fabric-v1.4.1/single-host/raft;docker-compose -f ../../base/docker-compose-e2e.yaml -f docker-compose-etcdraft2.yaml up -d;sleep 3s",
-      "end" : "cd network/fabric-v1.4.1/single-host/raft;docker-compose -f ../../base/docker-compose-e2e.yaml -f docker-compose-etcdraft2.yaml down --volumes --remove-orphans;docker rm $(docker ps -aq);docker rmi $(docker images dev* -q)"
+      "end" : "cd network/fabric-v1.4.1/single-host/raft;docker-compose -f ../../base/docker-compose-e2e.yaml -f docker-compose-etcdraft2.yaml down --volumes --remove-orphans;docker rm $(docker ps -aq);docker rmi $(docker images dev* -q);rm -rf /tmp/caliper"
     }
   },
   "fabric": {
