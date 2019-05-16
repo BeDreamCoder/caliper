@@ -1,14 +1,10 @@
-# Copyright IBM Corp. All Rights Reserved.
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-
 version: '2'
 
-networks:
-  byfn:
 services:
   zookeeper2:
+    restart: always
+    network_mode: "host"
+    hostname: 'zookeeper2'
     extends:
       file: ../../base/docker-compose-base.yaml
       service: zookeeper
@@ -19,5 +15,3 @@ services:
     volumes:
       - ${MOUNT_PATH}/zookeeper2/datalog:/datalog
       - ${MOUNT_PATH}/zookeeper2/data:/data
-    networks:
-      - byfn

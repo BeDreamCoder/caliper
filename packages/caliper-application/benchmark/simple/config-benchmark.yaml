@@ -6,49 +6,48 @@ test:
   clients:
     type: local
     number: 8
-#    type: zookeeper
-#    zoo:
-#      server: 10.229.42.159:2181
-#      clientsPerHost: 8
+  #      type: zookeeper
+  #      zoo:
+  #        server: zoo1:2181
+  #        clientsPerHost: 8
   rounds:
-  - label: open
-    description: Test description for the opening of an account through the deployed chaincode
-    txNumber:
-    - 2000
-    - 2000
-    - 2000
-    rateControl:
-    - type: fixed-rate
-      opts:
-        tps: 500
-    - type: fixed-rate
-      opts:
-          tps: 800
-    - type: fixed-rate
-      opts:
-          tps: 1000
-    arguments:
-      money: 10000
-    callback: benchmark/simple/open.js
-  - label: query
-    description: Test description for the query performance of the deployed chaincode
-    txNumber:
-    - 100
-    rateControl:
-    - type: fixed-rate
-      opts:
-        tps: 100
-    callback: benchmark/simple/query.js
+    - label: open
+      description: Test description for the opening of an account through the deployed chaincode
+      txNumber:
+        - 5000
+        - 8000
+        - 10000
+      rateControl:
+        - type: fixed-rate
+          opts:
+            tps: 500
+        - type: fixed-rate
+          opts:
+            tps: 800
+        - type: fixed-rate
+          opts:
+            tps: 1000
+      arguments:
+        money: 10000
+      callback: benchmark/simple/open.js
+    - label: query
+      description: Test description for the query performance of the deployed chaincode
+      txNumber:
+        - 100
+      rateControl:
+        - type: fixed-rate
+          opts:
+            tps: 100
+      callback: benchmark/simple/query.js
 monitor:
   type:
-  - docker
-  - process
+    - docker
+    - process
   docker:
     name:
-    - all
-    - http://192.168.0.91:2375/peer0.org1.example.com
+      - all
   process:
-  - command: node
-    arguments: local-client.js
-    multiOutput: avg
+    - command: node
+      arguments: local-client.js
+      multiOutput: avg
   interval: 1

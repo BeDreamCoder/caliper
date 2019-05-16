@@ -1,0 +1,24 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+networks:
+  byfn:
+services:
+  kafka0:
+    extends:
+      file: ../../base/docker-compose-base.yaml
+      service: kafka
+    container_name: kafka0
+    environment:
+      - KAFKA_BROKER_ID=1
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper0:2181,zookeeper1:2181,zookeeper2:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka0:9092
+    volumes:
+      - ${MOUNT_PATH}/kafka0/kafka-logs:/tmp/kafka-logs
+    networks:
+      - byfn
+
