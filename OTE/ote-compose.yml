@@ -17,13 +17,13 @@ services:
       - TESTCASE=$testcase
       - numChannels=$numChannels
       - FABRIC_CFG_PATH=/etc/hyperledger/fabric
-      - CORE_PEER_LOCALMSPID=PeerOrg1
+      - CORE_PEER_LOCALMSPID=Org1MSP
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/artifacts/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/artifacts/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
       - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
     volumes:
       - ../.:/opt/gopath/src/github.com/hyperledger/caliper
-      - ../NL/config/configtx.yaml:/etc/hyperledger/fabric/configtx.yaml
-      - ../NL/config/crypto-config:/etc/hyperledger/fabric/artifacts
-    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/OTE
-    command: sh -c 'sleep 40 && ./script.sh'
+      - ../config/configtx.yaml:/etc/hyperledger/fabric/configtx.yaml
+      - ../config/crypto-config:/etc/hyperledger/fabric/artifacts
+    working_dir: /opt/gopath/src/github.com/hyperledger/caliper/OTE
+    command: sh -c 'sleep 10 && ./script.sh'

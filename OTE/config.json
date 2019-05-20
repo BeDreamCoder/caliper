@@ -1,8 +1,8 @@
 {
-    "profile": "testOrgsOrdererGenesis",
-    "mspid": "OrdererOrg",
-    "channel": "testorgschannel",
+    "profile": "TwoOrgsOrdererGenesis",
+    "mspid": "OrdererMSP",
+    "channel": "mychannel",
     "seek": -2,
     "tls": true,
-    "quiet": true
+    "quiet": false
 }
