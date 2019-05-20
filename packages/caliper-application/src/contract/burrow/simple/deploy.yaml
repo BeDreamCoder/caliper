@@ -1,7 +1,0 @@
-# burrow deploy -i .
-
-jobs:
-
-- name: buildSimpleK
-  build:
-      contract: simple.sol
