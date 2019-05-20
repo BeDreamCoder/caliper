@@ -10,7 +10,7 @@ services:
     hostname: orderer3.example.com
     network_mode: "host"
     extends:
-      file: ../../base/peer-base.yaml
+      file: ../../base/orderer-base.yaml
       service: orderer-base
     container_name: orderer3.example.com
     volumes:

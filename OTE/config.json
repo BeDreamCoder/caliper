@@ -1,5 +1,5 @@
 {
-    "profile": "TwoOrgsOrdererGenesis",
+    "profile": "twoorgsorderergenesis",
     "mspid": "OrdererMSP",
     "channel": "mychannel",
     "seek": -2,

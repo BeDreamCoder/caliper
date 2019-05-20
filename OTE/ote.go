@@ -122,7 +122,7 @@ var optimizeClientsMode = false
 // ordStartPort (default port is 7050, but driver.sh uses 5005).
 // peerStartPort (default port is 7051, but driver.sh uses 7061).
 
-var ordStartPort uint16 = 5005
+var ordStartPort uint16 = 7050
 
 const (
     // Indicate whether a test requires counters for a Spy monitor, and when.
