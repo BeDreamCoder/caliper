@@ -433,7 +433,7 @@ Profiles:
           # Fault tolerance
           F: 1
           # Timeout of requests (seconds)
-          RequestTimeoutNsec: 1000000000
+          RequestTimeoutNsec: 10000000000
       Addresses:
         - orderer.example.com:7050
         - orderer2.example.com:7050
