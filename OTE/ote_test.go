@@ -459,3 +459,13 @@ func Test_FAB7081_15ktx_3ch_6ord_5kb_500batchsize_10kpayload(t *testing.T) {
         passResult, finalResultSummaryString := ote("FAB-7081_15ktx_3ch_6ord_5kb_500batchsize_10kpayload", 15000, 3, 6, "kafka", 5, spyOff, 1, 10 )
         if !passResult { t.Error(finalResultSummaryString) }
 }
+
+func Test_ORD106_1ch_5ord_raft(t *testing.T) {
+        passResult, finalResultSummaryString := ote("ORD-106", 10000, 1, 5, "raft", 0, spyOff, 1, 0 )
+        if !passResult { t.Error(finalResultSummaryString) }
+}
+
+func Test_ORD107_1ch_4ord_sbft(t *testing.T) {
+        passResult, finalResultSummaryString := ote("ORD-107", 10000, 1, 4, "sbft", 0, spyOff, 1, 0 )
+        if !passResult { t.Error(finalResultSummaryString) }
+}

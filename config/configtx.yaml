@@ -436,6 +436,9 @@ Profiles:
           RequestTimeoutNsec: 1000000000
       Addresses:
         - orderer.example.com:7050
+        - orderer2.example.com:7050
+        - orderer3.example.com:7050
+        - orderer4.example.com:7050
       Organizations:
         - *OrdererOrg
       Capabilities:
