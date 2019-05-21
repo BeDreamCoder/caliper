@@ -4,5 +4,5 @@
     "channel": "mychannel",
     "seek": -2,
     "tls": true,
-    "quiet": false
+    "quiet": true
 }
