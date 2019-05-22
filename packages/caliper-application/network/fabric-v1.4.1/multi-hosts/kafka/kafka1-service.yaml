@@ -5,10 +5,10 @@
 
 version: '2'
 
-networks:
-  byfn:
 services:
   kafka1:
+    network_mode: "host"
+    hostname: 'kafka1'
     extends:
       file: ../../base/docker-compose-base.yaml
       service: kafka
@@ -19,5 +19,3 @@ services:
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9092
     volumes:
       - ${MOUNT_PATH}/kafka1/kafka-logs:/tmp/kafka-logs
-    networks:
-      - byfn
