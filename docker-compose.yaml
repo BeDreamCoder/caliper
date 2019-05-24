@@ -1,0 +1,25 @@
+# copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+networks:
+  byfn:
+services:
+  caliper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: caliper
+    image: zhigui/caliper
+    working_dir: /usr/caliper/packages/caliper-application/scripts
+    command: node run-benchmark.js -c ../benchmark/simple/config.yaml -n ../network/fabric-v1.4.1/single-host/sbft/fabric-go.json
+    volumes:
+      - ./packages/caliper-application/benchamark:/usr/caliper/packages/caliper-application/benchamark
+      - ./packages/caliper-application/network:/usr/caliper/packages/caliper-application/network
+      - ./packages/caliper-application/scripts:/usr/caliper/packages/caliper-application/scripts
+    networks:
+      - byfn
+
